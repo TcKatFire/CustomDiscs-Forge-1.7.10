@@ -4,7 +4,7 @@
 
 Designed for **Forge 10.13.4.1614** and GT New Horizons-compatible environments.
 
-**[Русская версия / Russian version →](README_RU.md)**
+**[Русская версия / Russian version →](README.md)**
 
 > **Based on [Navoei/CustomDiscs](https://github.com/Navoei/CustomDiscs).**
 >
