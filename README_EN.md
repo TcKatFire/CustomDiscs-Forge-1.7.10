@@ -120,11 +120,6 @@ Client audio cache:
 <Minecraft directory>/customdiscs/cache/
 ```
 
-The volume GUI is available under:
-
-**Options → Controls → CustomDiscs Volume Settings**
-
-Default key: **O**
 
 ### Playback Range
 
