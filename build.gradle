@@ -1,0 +1,106 @@
+buildscript {
+    repositories {
+        maven { url = "https://maven.minecraftforge.net" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath "net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT"
+    }
+}
+
+apply plugin: "java"
+apply plugin: "forge"
+
+version = mod_version
+group = mod_group
+archivesBaseName = mod_id
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+minecraft {
+    version = "${minecraft_version}-${forge_version}-${minecraft_version}"
+    runDir = "run"
+    mappings = "stable_12"
+}
+
+tasks.matching { it.name == "downloadClient" }.all {
+    url = new net.minecraftforge.gradle.delayed.DelayedString(
+            project,
+            "https://launcher.mojang.com/v1/objects/e80d9b3bf5085002218d4be59e668bac718abbc6/client.jar"
+    )
+}
+tasks.matching { it.name == "downloadServer" }.all {
+    url = new net.minecraftforge.gradle.delayed.DelayedString(
+            project,
+            "https://launcher.mojang.com/v1/objects/952438ac4e01b4d115c5fc38f891710c4941df29/server.jar"
+    )
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/forge/java"]
+        }
+        resources {
+            srcDirs = ["src/forge/resources"]
+        }
+    }
+}
+
+processResources {
+    inputs.property "version", project.version
+    inputs.property "minecraftVersion", minecraft_version
+    filesMatching("mcmod.info") {
+        expand "version": project.version,
+                "mcversion": minecraft_version
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    embeddedAudio
+    compile.extendsFrom embeddedAudio
+}
+
+dependencies {
+    embeddedAudio "com.googlecode.soundlibs:mp3spi:1.9.5.4"
+    embeddedAudio "org.jflac:jflac-codec:1.5.2"
+}
+
+jar {
+    from {
+        configurations.embeddedAudio.collect { dependency ->
+            dependency.isDirectory() ? dependency : zipTree(dependency)
+        }
+    }
+
+    task audioDecoderSmokeTest(type: JavaExec) {
+        dependsOn testClasses
+        classpath = sourceSets.test.runtimeClasspath
+        main = "me.navoei.customdiscs.client.AudioDecoderSmokeTest"
+    }
+
+    task playbackLifecycleSmokeTest(type: JavaExec) {
+        dependsOn testClasses
+        classpath = sourceSets.test.runtimeClasspath
+        main = "me.navoei.customdiscs.PlaybackLifecycleSmokeTest"
+    }
+
+    check.dependsOn audioDecoderSmokeTest, playbackLifecycleSmokeTest
+    exclude "META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA"
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes(
+                "Specification-Title": "CustomDiscs",
+                "Specification-Vendor": "TcKatFire",
+                "Specification-Version": "1",
+                "Implementation-Title": project.name,
+                "Implementation-Version": project.version,
+                "Implementation-Vendor": "TcKatFire"
+        )
+    }
+}

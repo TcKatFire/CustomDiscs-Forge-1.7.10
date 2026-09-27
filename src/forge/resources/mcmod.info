@@ -1,0 +1,12 @@
+[
+  {
+    "modid": "customdiscs",
+    "name": "CustomDiscs",
+    "description": "Server-authoritative custom positional audio for music discs, horns, and player heads.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/Navoei/CustomDiscs",
+    "credits": "TcKatFire",
+    "authors": ["TcKatFire"]
+  }
+]

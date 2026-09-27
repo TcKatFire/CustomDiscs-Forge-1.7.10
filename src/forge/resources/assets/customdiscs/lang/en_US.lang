@@ -1,0 +1,11 @@
+item.customdiscs.horn.name=Custom Horn
+key.customdiscs.volume=CustomDiscs Volume Settings
+key.categories.customdiscs=CustomDiscs
+gui.customdiscs.done=Done
+gui.customdiscs.volume.title=CustomDiscs Volume
+gui.customdiscs.volume.discs=Music Discs: %d%%
+gui.customdiscs.volume.horns=Horns: %d%%
+gui.customdiscs.volume.heads=Player Heads: %d%%
+gui.customdiscs.models.title=Custom Model Selector
+gui.customdiscs.models.previous=< Previous
+gui.customdiscs.models.next=Next >

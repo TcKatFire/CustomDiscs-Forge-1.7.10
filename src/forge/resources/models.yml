@@ -1,0 +1,32 @@
+# [CustomDiscs — Custom Model Data configuration]
+#
+# The material key (used in each item type) is the lowercase material name:
+#   music_disc_cat, music_disc_11, music_disc_13, ... => For discs
+#   goat_horn => For horns
+#   player_head, zombie_head, creeper_head, ... => For heads
+#
+# 'value' is the integer threshold in your Resource Pack item definition.
+# 'name' is the displayed label used in the GUI and for command (with autocomplete) "/cd setmodel <name>".
+
+disc:
+  #music_disc_cat:
+  #  - value: 1
+  #    name: "Meow Record"
+  #  - value: 2
+  #    name: "Magic Music"
+  #music_disc_11:
+  #  - value: 1
+  #    name: "Mystery song"
+
+horn:
+  #goat_horn:
+  #  - value: 1
+  #    name: "Beware of the Horn"
+
+head:
+  #player_head:
+  #  - value: 1
+  #    name: "Head me"
+  #zombie_head:
+  #  - value: 1
+  #    name: "Zombie me"
