@@ -120,11 +120,6 @@ config/
 <Minecraft directory>/customdiscs/cache/
 ```
 
-GUI громкости находится в:
-
-**Options → Controls → CustomDiscs Volume Settings**
-
-Клавиша по умолчанию: **O**
 
 ### Радиус воспроизведения
 
